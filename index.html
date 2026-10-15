@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Le Bouquet Floral Boutique: handcrafted bouquets, sympathy tributes and event flowers in Phoenix, Arizona.">
+<title>Le Bouquet Floral Boutique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
+<style>
+/* Layout: dark florist's-studio ground, gold hairlines; split hero, service cards, filterable masonry gallery, about, contact. */
+:root {
+  --ink: #0e0c0a;          /* page ground, warm black */
+  --panel: #17130f;        /* raised surfaces */
+  --line: #3a2f22;         /* hairlines */
+  --gold: #c9a45c;         /* accent */
+  --gold-soft: #e3c98f;
+  --petal: #f1d9c7;        /* blush, used sparingly */
+  --text: #ece4d8;
+  --muted: #a99c89;
+  --display: "Cinzel", "Trajan Pro", Georgia, serif;
+  --serif: "Cormorant Garamond", Garamond, Georgia, serif;
+  --sans: "Jost", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --gutter: clamp(16px, 4vw, 48px);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body { margin: 0; background: var(--ink); color: var(--text); font: 300 1.05rem/1.7 var(--sans); }
+img { max-width: 100%; display: block; }
+a { color: var(--gold-soft); }
+:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; letter-spacing: .04em; }
+.wrap { max-width: 1180px; margin-inline: auto; padding-inline: var(--gutter); }
+.eyebrow { font: 500 .72rem/1 var(--sans); letter-spacing: .32em; text-transform: uppercase; color: var(--gold); }
+.script { font-family: var(--serif); font-style: italic; color: var(--gold-soft); }
+.ornament { display: flex; align-items: center; gap: 12px; color: var(--gold); }
+.ornament::before, .ornament::after { content: ""; height: 1px; flex: 1; background: linear-gradient(90deg, transparent, var(--gold)); }
+.ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+.ornament span { font-size: .8rem; }
+.placeholder { background: rgba(201,164,92,.14); color: var(--gold-soft); border-bottom: 1px dashed var(--gold); padding: 0 .2em; }
+
+/* Header */
+header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(14,12,10,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; color: var(--text); }
+.logo b { font: 400 1.25rem/1 var(--display); letter-spacing: .14em; }
+.logo small { font: 400 .56rem/1 var(--sans); letter-spacing: .38em; color: var(--gold); margin-top: 6px; }
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(14px, 3vw, 32px); flex-wrap: wrap; }
+nav a { color: var(--muted); text-decoration: none; font-size: .78rem; letter-spacing: .22em; text-transform: uppercase; }
+nav a:hover { color: var(--gold-soft); }
+
+/* Hero */
+.hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); min-height: min(78vh, 720px); border-bottom: 1px solid var(--line); }
+.hero-copy { padding: clamp(40px, 7vw, 96px) var(--gutter); display: flex; flex-direction: column; justify-content: center; gap: 24px; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.02; letter-spacing: .08em; }
+.hero h1 em { display: block; font: italic 400 .62em/1.1 var(--serif); letter-spacing: 0; color: var(--gold-soft); margin-top: .25em; text-transform: none; }
+.hero p { margin: 0; color: var(--muted); max-width: 38ch; font-size: 1.1rem; }
+.hero-img { position: relative; min-height: 340px; }
+.hero-img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; }
+.hero-img::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--ink) 0%, rgba(14,12,10,0) 22%); }
+.ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+.btn { display: inline-block; padding: 14px 26px; font: 500 .74rem/1 var(--sans); letter-spacing: .24em; text-transform: uppercase; text-decoration: none; border: 1px solid var(--gold); color: var(--ink); background: var(--gold); cursor: pointer; }
+.btn:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
+.btn.ghost { background: transparent; color: var(--gold-soft); }
+.btn.ghost:hover { background: rgba(201,164,92,.12); }
+
+section { padding-block: clamp(64px, 9vw, 112px); }
+.head { display: grid; gap: 14px; justify-items: center; text-align: center; margin-bottom: clamp(36px, 5vw, 56px); }
+.head h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.head p { margin: 0; color: var(--muted); max-width: 56ch; }
+.head .ornament { width: min(260px, 70%); }
+
+/* Services */
+.services { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; }
+.svc { border: 1px solid var(--line); background: var(--panel); display: flex; flex-direction: column; }
+.svc img { aspect-ratio: 4/5; width: 100%; object-fit: cover; }
+.svc div { padding: 20px 20px 24px; display: grid; gap: 8px; }
+.svc h3 { font-size: 1.05rem; letter-spacing: .14em; color: var(--gold-soft); }
+.svc p { margin: 0; font-size: .95rem; color: var(--muted); }
+
+/* Gallery */
+#gallery { background: var(--panel); border-block: 1px solid var(--line); }
+.filters { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+.filters button { font: 500 .7rem/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; background: transparent; color: var(--muted); border: 1px solid var(--line); padding: 11px 16px; cursor: pointer; }
+.filters button[aria-pressed="true"] { color: var(--ink); background: var(--gold); border-color: var(--gold); }
+.grid { columns: 4 220px; column-gap: 14px; }
+.grid figure { margin: 0 0 14px; break-inside: avoid; position: relative; cursor: zoom-in; overflow: hidden; border: 1px solid var(--line); }
+.grid img { width: 100%; height: auto; transition: transform .6s ease; }
+.grid figure:hover img { transform: scale(1.04); }
+.grid figcaption { position: absolute; inset: auto 0 0 0; padding: 28px 12px 10px; font: italic 1rem/1.25 var(--serif); color: var(--text); background: linear-gradient(transparent, rgba(14,12,10,.85)); opacity: 0; transition: opacity .3s; }
+.grid figure:hover figcaption, .grid figure:focus-visible figcaption { opacity: 1; }
+
+/* Lightbox */
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(8,7,6,.94); display: grid; place-items: center; padding: 56px 16px; }
+.lightbox img { max-height: 80vh; width: auto; border: 1px solid var(--line); }
+.lightbox p { font: italic 1.15rem/1.3 var(--serif); color: var(--gold-soft); text-align: center; margin: 14px 0 0; }
+.lightbox button { position: absolute; background: none; border: 1px solid var(--line); color: var(--text); width: 44px; height: 44px; font-size: 1.3rem; cursor: pointer; }
+.lb-close { top: calc(12px + env(safe-area-inset-top, 0px)); right: 12px; }
+.lb-prev { left: 12px; top: 50%; } .lb-next { right: 12px; top: 50%; }
+
+/* About */
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.about-img { position: relative; }
+.about-img img { width: 100%; aspect-ratio: 4/5; object-fit: cover; }
+.about-img::before { content: ""; position: absolute; inset: 14px -14px -14px 14px; border: 1px solid var(--gold); z-index: -1; }
+.about-copy { display: grid; gap: 18px; min-width: 0; }
+.about-copy h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.about-copy p { margin: 0; max-width: 60ch; }
+.quote { font: italic 1.6rem/1.35 var(--serif); color: var(--gold-soft); border-left: 1px solid var(--gold); padding-left: 20px; }
+.values { display: flex; gap: 10px 22px; flex-wrap: wrap; font: 400 .76rem/1 var(--display); letter-spacing: .24em; color: var(--gold); }
+
+/* Why choose us */
+#why { background: var(--panel); border-top: 1px solid var(--line); }
+.why { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: center; }
+.why-copy { display: grid; gap: 18px; }
+.why-copy h2 { font-size: clamp(1.8rem, 3.6vw, 2.6rem); }
+.checks { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; font: 400 1.25rem/1.3 var(--serif); }
+.checks li { display: flex; gap: 14px; align-items: baseline; }
+.checks li::before { content: "✓"; color: var(--gold); font-family: var(--sans); }
+.why-quote { margin: 0; border: 1px solid var(--gold); outline: 1px solid var(--line); outline-offset: 8px; padding: clamp(28px, 5vw, 56px); text-align: center; font-size: clamp(1.7rem, 3.4vw, 2.4rem); line-height: 1.3; }
+@media (max-width: 900px) { .why { grid-template-columns: 1fr; } }
+
+/* Contact */
+#contact { border-top: 1px solid var(--line); }
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: clamp(32px, 6vw, 72px); }
+.details { display: grid; gap: 22px; align-content: start; }
+.details dl { margin: 0; display: grid; gap: 18px; }
+.details dt { font: 500 .7rem/1 var(--sans); letter-spacing: .28em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+.details dd { margin: 0; font-size: 1.05rem; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; background: var(--panel); border: 1px solid var(--line); padding: clamp(20px, 4vw, 36px); }
+form .full { grid-column: 1 / -1; }
+label { display: grid; gap: 6px; font: 500 .7rem/1 var(--sans); letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+input, select, textarea { font: 300 1rem/1.4 var(--sans); color: var(--text); background: var(--ink); border: 1px solid var(--line); padding: 12px; width: 100%; min-width: 0; }
+input:focus, select:focus, textarea:focus { border-color: var(--gold); outline: none; }
+textarea { min-height: 120px; resize: vertical; }
+.form-note { margin: 0; font-size: .9rem; color: var(--gold-soft); }
+
+footer { border-top: 1px solid var(--line); padding-block: 36px; text-align: center; color: var(--muted); font-size: .85rem; display: grid; gap: 10px; }
+footer .logo { align-items: center; }
+
+@media (max-width: 900px) {
+  .services { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-template-columns: 1fr; min-height: 0; }
+  .hero-img { order: -1; min-height: 0; aspect-ratio: 1/1; max-height: 70vh; width: 100%; }
+  .hero-img::after { background: linear-gradient(0deg, var(--ink) 0%, rgba(14,12,10,0) 30%); }
+  .about, .contact { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  header.site .wrap { justify-content: center; }
+  nav ul { justify-content: center; gap: 16px; }
+  .services { grid-template-columns: 1fr; }
+  .svc { flex-direction: row; } .svc img { width: 38%; aspect-ratio: auto; }
+  form { grid-template-columns: 1fr; }
+  .grid { columns: 2 140px; column-gap: 10px; } .grid figure { margin-bottom: 10px; }
+  .about-img::before { inset: 10px -6px -10px 6px; }
+}
+</style>
+</head>
+<body>
+
+
+<header class="site">
+  <div class="wrap">
+    <a class="logo" href="#home"><b>LE BOUQUET</b><small>FLORAL BOUTIQUE</small></a>
+    <nav aria-label="Main"><ul>
+      <li><a href="#services">Flowers</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<main>
+  <div class="hero" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow">Handcrafted floral design</span>
+      <h1>Le Bouquet<em>Floral Boutique</em></h1>
+      <p>Elegant designs crafted with love. Fresh bouquets, sympathy tributes and event centerpieces, each one designed to order in our studio in Phoenix, Arizona.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">Order flowers</a>
+        <a class="btn ghost" href="#gallery">See our work</a>
+      </div>
+    </div>
+    <div class="hero-img"><picture><source media="(max-width: 900px)" srcset="images/hero-mobile.jpg"><img src="images/hero.jpg" alt="Tree wrapped in hanging flowers and string lights" fetchpriority="high"></picture></div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">What we make</span>
+        <h2>Flowers for every occasion</h2>
+        <div class="ornament"><span>✿</span></div>
+      </div>
+      <div class="services">
+        <article class="svc"><img src="images/svc-bouquets.jpg" alt="Mixed roses in a gold-edged wrap" loading="lazy"><div><h3>Bouquets</h3><p>Birthdays, anniversaries, thank-yous and just-because flowers, wrapped or in a vase.</p></div></article>
+        <article class="svc"><img src="images/svc-sympathy.jpg" alt="Pink and white casket spray" loading="lazy"><div><h3>Sympathy</h3><p>Standing sprays, wreaths, hearts, crosses and casket pieces, delivered to the service.</p></div></article>
+        <article class="svc"><img src="images/svc-events.jpg" alt="Cascading bridal bouquet" loading="lazy"><div><h3>Events</h3><p>Bridal bouquets, centerpieces, flower bars and installations for weddings, showers and parties.</p></div></article>
+        <article class="svc"><img src="images/svc-arrangements.jpg" alt="Anthurium, ginger and succulent in a modern design" loading="lazy"><div><h3>Custom designs</h3><p>Tell us the colors, the person and the budget. We'll design something only for them.</p></div></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Gallery</span>
+        <h2>Recent work from the studio</h2>
+        <p>Every piece here was designed and arranged by Norma. Tap a photo to see it larger.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filter gallery">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="bouquets" aria-pressed="false">Bouquets</button>
+        <button type="button" data-f="arrangements" aria-pressed="false">Arrangements</button>
+        <button type="button" data-f="sympathy" aria-pressed="false">Sympathy</button>
+        <button type="button" data-f="events" aria-pressed="false">Events</button>
+      </div>
+      <div class="grid" id="grid">
+        <figure data-cat="bouquets"><img src="images/g01.jpg" alt="Red roses in a black and gold wrap" width="1050" height="1400" loading="lazy"><figcaption>Red roses in a black and gold wrap</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g02.jpg" alt="Anthurium, ginger and succulent in a modern design" width="998" height="1400" loading="lazy"><figcaption>Anthurium, ginger and succulent in a modern design</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g03.jpg" alt="Yellow rose and lily casket spray" width="1400" height="1050" loading="lazy"><figcaption>Yellow rose and lily casket spray</figcaption></figure>
+        <figure data-cat="events"><img src="images/g04.jpg" alt="Cascading bridal bouquet" width="788" height="1400" loading="lazy"><figcaption>Cascading bridal bouquet</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g05.jpg" alt="Sunflowers in a painted Talavera vase" width="1050" height="1400" loading="lazy"><figcaption>Sunflowers in a painted Talavera vase</figcaption></figure>
+        <figure data-cat="bouquets"><img src="images/g06.jpg" alt="Mixed roses in a gold-edged wrap" width="1050" height="1400" loading="lazy"><figcaption>Mixed roses in a gold-edged wrap</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g07.jpg" alt="Pink and white casket spray" width="1107" height="855" loading="lazy"><figcaption>Pink and white casket spray</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g08.jpg" alt="Tropical standing spray with birds of paradise" width="1050" height="1400" loading="lazy"><figcaption>Tropical standing spray with birds of paradise</figcaption></figure>
+        <figure data-cat="events"><img src="images/g09.jpg" alt="Tall centerpiece for an evening reception" width="933" height="1400" loading="lazy"><figcaption>Tall centerpiece for an evening reception</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g10.jpg" alt="Stargazer lilies and mixed roses" width="1050" height="1400" loading="lazy"><figcaption>Stargazer lilies and mixed roses</figcaption></figure>
+        <figure data-cat="bouquets"><img src="images/g11.jpg" alt="Red roses with crystal centers" width="1050" height="1400" loading="lazy"><figcaption>Red roses with crystal centers</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g12.jpg" alt="Pink heart wreath on an easel" width="1039" height="1400" loading="lazy"><figcaption>Pink heart wreath on an easel</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g13.jpg" alt="Sunflowers, orange roses and lilies" width="1050" height="1400" loading="lazy"><figcaption>Sunflowers, orange roses and lilies</figcaption></figure>
+        <figure data-cat="events"><img src="images/g14.jpg" alt="Flower bar at an outdoor party" width="1050" height="1400" loading="lazy"><figcaption>Flower bar at an outdoor party</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g15.jpg" alt="Purple orchid planter" width="1050" height="1400" loading="lazy"><figcaption>Purple orchid planter</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g16.jpg" alt="Yellow rose and lily standing spray" width="1050" height="1400" loading="lazy"><figcaption>Yellow rose and lily standing spray</figcaption></figure>
+        <figure data-cat="bouquets"><img src="images/g17.jpg" alt="Pink roses with gold chocolate accents" width="1050" height="1400" loading="lazy"><figcaption>Pink roses with gold chocolate accents</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g18.jpg" alt="Red roses and lilies with butterflies" width="971" height="1400" loading="lazy"><figcaption>Red roses and lilies with butterflies</figcaption></figure>
+        <figure data-cat="events"><img src="images/g19.jpg" alt="Two Peas in a Pod baby shower centerpiece" width="1050" height="1400" loading="lazy"><figcaption>Two Peas in a Pod baby shower centerpiece</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g20.jpg" alt="Red and white standing spray" width="1057" height="1400" loading="lazy"><figcaption>Red and white standing spray</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g21.jpg" alt="Orange lilies and red gerberas in a modern design" width="1050" height="1400" loading="lazy"><figcaption>Orange lilies and red gerberas in a modern design</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g22.jpg" alt="White lilies and greenery" width="1050" height="1400" loading="lazy"><figcaption>White lilies and greenery</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g23.jpg" alt="Lavender and pink heart wreath" width="1050" height="1400" loading="lazy"><figcaption>Lavender and pink heart wreath</figcaption></figure>
+        <figure data-cat="events"><img src="images/g24.jpg" alt="Flower birthday cake with a red rose" width="1050" height="1400" loading="lazy"><figcaption>Flower birthday cake with a red rose</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g25.jpg" alt="Tropical standing spray" width="1050" height="1400" loading="lazy"><figcaption>Tropical standing spray</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g26.jpg" alt="White cross with yellow lilies" width="905" height="1400" loading="lazy"><figcaption>White cross with yellow lilies</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g27.jpg" alt="Bright mixed bouquet with a butterfly" width="1050" height="1400" loading="lazy"><figcaption>Bright mixed bouquet with a butterfly</figcaption></figure>
+        <figure data-cat="events"><img src="images/g28.jpg" alt="Autumn centerpiece with white pumpkins" width="1050" height="1400" loading="lazy"><figcaption>Autumn centerpiece with white pumpkins</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g29.jpg" alt="Red roses and lilies on a pedestal" width="1050" height="1400" loading="lazy"><figcaption>Red roses and lilies on a pedestal</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g30.jpg" alt="Orange lilies and gerberas" width="1050" height="1400" loading="lazy"><figcaption>Orange lilies and gerberas</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g31.jpg" alt="Blue and white wreath" width="1050" height="1400" loading="lazy"><figcaption>Blue and white wreath</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g32.jpg" alt="Tall bright mixed arrangement" width="1277" height="1400" loading="lazy"><figcaption>Tall bright mixed arrangement</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g33.jpg" alt="Patriotic arrangement with flags" width="1050" height="1400" loading="lazy"><figcaption>Patriotic arrangement with flags</figcaption></figure>
+        <figure data-cat="arrangements"><img src="images/g34.jpg" alt="White roses and peach carnations in a pedestal urn" width="1400" height="1155" loading="lazy"><figcaption>White roses and peach carnations in a pedestal urn</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g35.jpg" alt="Yellow lily and rose urn arrangement" width="1050" height="1400" loading="lazy"><figcaption>Yellow lily and rose urn arrangement</figcaption></figure>
+        <figure data-cat="sympathy"><img src="images/g36.jpg" alt="White urn arrangement" width="1124" height="1250" loading="lazy"><figcaption>White urn arrangement</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about">
+      <div class="about-img"><img src="images/about.jpg" alt="Tropical standing spray with birds of paradise" loading="lazy"></div>
+      <div class="about-copy">
+        <span class="eyebrow">About Norma</span>
+        <h2>Every flower tells a story</h2>
+        <p>Le Bouquet Floral Boutique is a family florist run by <span class="placeholder">Norma Lorem</span>, who has been designing arrangements for more than 35 years. What started as <span class="placeholder">lorem ipsum dolor sit amet</span> is now a studio that serves families, churches, funeral homes and event planners across the Phoenix area.</p>
+        <p>Each piece is made to order with fresh stems chosen that week. Whether it's a single bouquet for a birthday or forty centerpieces for a reception, Norma designs it personally and checks every arrangement before it leaves the shop.</p>
+        <p class="quote">“Flowers say what words can’t.”</p>
+        <div class="values"><span>FRESH</span><span>·</span><span>PERSONAL</span><span>·</span><span>ON TIME</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why">
+    <div class="wrap why">
+      <div class="why-copy">
+        <span class="eyebrow">Why choose us</span>
+        <h2>Care in every detail</h2>
+        <ul class="checks">
+          <li>Fresh flowers chosen that week</li>
+          <li>Custom designs for every budget</li>
+          <li>Personal attention from Norma</li>
+          <li>On-time delivery to homes, churches and venues</li>
+          <li>Passion in every arrangement</li>
+        </ul>
+      </div>
+      <p class="why-quote"><span class="script">Every flower tells a story.</span><br><span class="script">Let us be part of yours.</span></p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="head">
+        <span class="eyebrow">Contact</span>
+        <h2>Let's create something beautiful together</h2>
+        <p>Call, message or send the form below. For sympathy and same-day orders, please call.</p>
+      </div>
+      <div class="contact">
+        <div class="details">
+          <dl>
+            <div><dt>Phone</dt><dd>(602) 123-4567</dd></div>
+            <div><dt>Email</dt><dd>info@lebouquetfloralboutique.com</dd></div>
+            <div><dt>Studio</dt><dd><span class="placeholder">1234 Lorem Ipsum Ave, Dolor Sit 00000</span></dd></div>
+            <div><dt>Hours</dt><dd><span class="placeholder">Lorem ipsum dolor sit amet</span></dd></div>
+            <div><dt>Delivery</dt><dd><span class="placeholder">Consectetur adipiscing elit, sed do eiusmod</span></dd></div>
+            <div><dt>Online</dt><dd>www.lebouquetfloralboutique.com<br>Instagram @lebouquetfloralboutique</dd></div>
+          </dl>
+        </div>
+        <form id="order" novalidate>
+          <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
+          <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          <label for="f-occasion">Occasion<select id="f-occasion" name="occasion">
+            <option>Birthday</option><option>Anniversary</option><option>Sympathy</option><option>Wedding or event</option><option>Just because</option><option>Other</option>
+          </select></label>
+          <label for="f-date">Date needed<input id="f-date" name="date" type="date"></label>
+          <label class="full" for="f-msg">Tell us about it<textarea id="f-msg" name="message" placeholder="Colors, flowers they love, budget, delivery address"></textarea></label>
+          <div class="full"><button class="btn" type="submit">Send request</button></div>
+          <p class="form-note full" id="form-note" hidden></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap" style="display:grid;gap:10px;justify-items:center">
+    <a class="logo" href="#home"><b>LE BOUQUET</b><small>FLORAL BOUTIQUE</small></a>
+    <span>© 2026 Le Bouquet Floral Boutique · Phoenix, Arizona</span>
+  </div>
+</footer>
+
+<div class="lightbox" id="lb" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-close" type="button" aria-label="Close">✕</button>
+  <button class="lb-prev" type="button" aria-label="Previous photo">‹</button>
+  <figure style="margin:0"><img id="lb-img" alt=""><p id="lb-cap"></p></figure>
+  <button class="lb-next" type="button" aria-label="Next photo">›</button>
+</div>
+
+<script>
+(() => {
+  const figs = [...document.querySelectorAll('#grid figure')];
+  document.querySelectorAll('.filters button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.filters button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    figs.forEach(f => f.hidden = b.dataset.f !== 'all' && f.dataset.cat !== b.dataset.f);
+  }));
+  const lb = document.getElementById('lb'), img = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+  let i = 0;
+  const visible = () => figs.filter(f => !f.hidden);
+  const show = n => { const v = visible(); i = (n + v.length) % v.length; const im = v[i].querySelector('img'); img.src = im.src; img.alt = im.alt; cap.textContent = im.alt; lb.hidden = false; };
+  figs.forEach(f => { f.tabIndex = 0; const open = () => show(visible().indexOf(f)); f.addEventListener('click', open); f.addEventListener('keydown', e => { if (e.key === 'Enter') open(); }); });
+  lb.querySelector('.lb-close').onclick = () => lb.hidden = true;
+  lb.querySelector('.lb-prev').onclick = () => show(i - 1);
+  lb.querySelector('.lb-next').onclick = () => show(i + 1);
+  lb.addEventListener('click', e => { if (e.target === lb) lb.hidden = true; });
+  document.addEventListener('keydown', e => { if (lb.hidden) return; if (e.key === 'Escape') lb.hidden = true; if (e.key === 'ArrowLeft') show(i - 1); if (e.key === 'ArrowRight') show(i + 1); });
+  document.getElementById('order').addEventListener('submit', e => {
+    e.preventDefault();
+    const note = document.getElementById('form-note');
+    if (!e.target.name.value.trim() || !e.target.phone.value.trim()) { note.textContent = 'Please add your name and phone number so we can reach you.'; note.hidden = false; return; }
+    note.textContent = 'Preview only: this form is not connected yet, so nothing was sent. Please call us to place your order.'; note.hidden = false;
+  });
+})();
+</script>
+
+</body>
+</html>
