@@ -326,7 +326,7 @@ footer .logo { align-items: center; }
         <div class="details">
           <dl>
             <div><dt>Phone</dt><dd>(602) 123-4567</dd></div>
-            <div><dt>Email</dt><dd>info@lebouquetfloralboutique.com</dd></div>
+            <div><dt>Email</dt><dd><a href="mailto:lebouquetfloral@icloud.com">lebouquetfloral@icloud.com</a></dd></div>
             <div><dt>Studio</dt><dd><span class="placeholder">1234 Lorem Ipsum Ave, Dolor Sit 00000</span></dd></div>
             <div><dt>Hours</dt><dd><span class="placeholder">Lorem ipsum dolor sit amet</span></dd></div>
             <div><dt>Delivery</dt><dd><span class="placeholder">Consectetur adipiscing elit, sed do eiusmod</span></dd></div>
@@ -336,6 +336,7 @@ footer .logo { align-items: center; }
         <form id="order" novalidate>
           <label for="f-name">Name<input id="f-name" name="name" autocomplete="name" required></label>
           <label for="f-phone">Phone<input id="f-phone" name="phone" type="tel" autocomplete="tel" required></label>
+          <label class="full" for="f-email">Email (optional)<input id="f-email" name="email" type="email" autocomplete="email"></label>
           <label for="f-occasion">Occasion<select id="f-occasion" name="occasion">
             <option>Birthday</option><option>Anniversary</option><option>Sympathy</option><option>Wedding or event</option><option>Just because</option><option>Other</option>
           </select></label>
@@ -384,7 +385,20 @@ footer .logo { align-items: center; }
     e.preventDefault();
     const note = document.getElementById('form-note');
     if (!e.target.name.value.trim() || !e.target.phone.value.trim()) { note.textContent = 'Please add your name and phone number so we can reach you.'; note.hidden = false; return; }
-    note.textContent = 'Preview only: this form is not connected yet, so nothing was sent. Please call us to place your order.'; note.hidden = false;
+    const f = e.target, btn = f.querySelector('button[type=submit]');
+    const data = Object.fromEntries(new FormData(f));
+    data._subject = 'New flower request from ' + data.name;
+    data._template = 'table';
+    if (data.email) data._replyto = data.email;
+    btn.disabled = true; note.textContent = 'Sending...'; note.hidden = false;
+    fetch('https://formsubmit.co/ajax/lebouquetfloral@icloud.com', {
+      method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(data)
+    }).then(r => r.json()).then(res => {
+      if (String(res.success) !== 'true') throw new Error(res.message || 'failed');
+      f.reset(); note.textContent = 'Thank you! Your request was sent. We will be in touch soon.';
+    }).catch(() => {
+      note.textContent = 'Sorry, your request could not be sent. Please call or email us instead.';
+    }).finally(() => { btn.disabled = false; });
   });
 })();
 </script>
