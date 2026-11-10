@@ -3,8 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Le Bouquet Floral Boutique: handcrafted bouquets, sympathy tributes and event flowers in Phoenix, Arizona.">
-<title>Le Bouquet Floral Boutique</title>
+<meta name="description" content="Alzaria Floral Boutique: handcrafted bouquets, sympathy tributes and event flowers in Phoenix, Arizona.">
+<title>Alzaria Floral Boutique</title>
+<link rel="icon" type="image/png" href="images/brand/favicon.png">
+<link rel="apple-touch-icon" href="images/brand/apple-touch-icon.png">
+<meta property="og:title" content="Alzaria Floral Boutique">
+<meta property="og:description" content="Handcrafted bouquets, sympathy tributes and event flowers in Phoenix, Arizona.">
+<meta property="og:image" content="images/brand/og-image.jpg">
+<meta name="theme-color" content="#0e0c0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&display=swap">
@@ -46,7 +52,9 @@ h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; 
 /* Header */
 header.site { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: rgba(14,12,10,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
-.logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; color: var(--text); }
+.logo { text-decoration: none; display: flex; align-items: center; gap: 10px; line-height: 1; color: var(--text); }
+.logo img { height: 46px; width: auto; }
+.logo span { display: flex; flex-direction: column; }
 .logo b { font: 400 1.25rem/1 var(--display); letter-spacing: .14em; }
 .logo small { font: 400 .56rem/1 var(--sans); letter-spacing: .38em; color: var(--gold); margin-top: 6px; }
 nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(14px, 3vw, 32px); flex-wrap: wrap; }
@@ -57,6 +65,7 @@ nav a:hover { color: var(--gold-soft); }
 .hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); min-height: min(78vh, 720px); border-bottom: 1px solid var(--line); }
 .hero-copy { padding: clamp(40px, 7vw, 96px) var(--gutter); display: flex; flex-direction: column; justify-content: center; gap: 24px; }
 .hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); line-height: 1.02; letter-spacing: .08em; }
+.hero-logo img { width: min(100%, 460px); height: auto; margin-inline: -2%; }
 .hero h1 em { display: block; font: italic 400 .62em/1.1 var(--serif); letter-spacing: 0; color: var(--gold-soft); margin-top: .25em; text-transform: none; }
 .hero p { margin: 0; color: var(--muted); max-width: 38ch; font-size: 1.1rem; }
 .hero-img { position: relative; min-height: 340px; }
@@ -165,7 +174,7 @@ footer .logo { align-items: center; }
 
 <header class="site">
   <div class="wrap">
-    <a class="logo" href="#home"><b>LE BOUQUET</b><small>FLORAL BOUTIQUE</small></a>
+    <a class="logo" href="#home"><img src="images/brand/alzaria-mark.webp" alt="" width="300" height="139"><span><b>ALZARIA</b><small>FLORAL BOUTIQUE</small></span></a>
     <nav aria-label="Main"><ul>
       <li><a href="#services">Flowers</a></li>
       <li><a href="#gallery">Gallery</a></li>
@@ -179,7 +188,7 @@ footer .logo { align-items: center; }
   <div class="hero" id="home">
     <div class="hero-copy">
       <span class="eyebrow">Handcrafted floral design</span>
-      <h1>Le Bouquet<em>Floral Boutique</em></h1>
+      <h1 class="hero-logo"><img src="images/brand/alzaria-logo.webp" alt="Alzaria Floral Boutique" width="1000" height="681" fetchpriority="high"></h1>
       <p>Elegant designs crafted with love. Fresh bouquets, sympathy tributes and event centerpieces, each one designed to order in our studio in Phoenix, Arizona.</p>
       <div class="ctas">
         <a class="btn" href="#contact">Order flowers</a>
@@ -290,7 +299,7 @@ footer .logo { align-items: center; }
       <div class="about-copy">
         <span class="eyebrow">About Norma</span>
         <h2>Every flower tells a story</h2>
-        <p>Le Bouquet Floral Boutique is a family florist run by Norma Lorenia Jimenez, who has been designing arrangements for more than 35 years. She serves families, churches, funeral homes and event planners across the Phoenix area.</p>
+        <p>Alzaria Floral Boutique is a family florist run by Norma Lorenia Jimenez, who has been designing arrangements for more than 35 years. She serves families, churches, funeral homes and event planners across the Phoenix area.</p>
         <p>Each piece is made to order with fresh stems chosen that week. Whether it's a single bouquet for a birthday or forty centerpieces for a reception, Norma designs it personally and checks every arrangement before it goes out.</p>
         <p class="quote">“Flowers say what words can’t.”</p>
         <div class="values"><span>FRESH</span><span>·</span><span>PERSONAL</span><span>·</span><span>ON TIME</span></div>
@@ -329,7 +338,7 @@ footer .logo { align-items: center; }
             <div><dt>Email</dt><dd><a href="mailto:lebouquetfloral@icloud.com">lebouquetfloral@icloud.com</a></dd></div>
             <div><dt>Hours</dt><dd><span class="placeholder">Lorem ipsum dolor sit amet</span></dd></div>
             <div><dt>Delivery</dt><dd>Delivery available, or arrange a pickup when you order</dd></div>
-            <div><dt>Online</dt><dd>www.lebouquetfloralboutique.com<br>Instagram @lebouquetfloralboutique</dd></div>
+            <div><dt>Online</dt><dd>www.alzariafloralboutique.com<br>Instagram @lebouquetfloralboutique</dd></div>
           </dl>
         </div>
         <form id="order" novalidate>
@@ -351,8 +360,8 @@ footer .logo { align-items: center; }
 
 <footer>
   <div class="wrap" style="display:grid;gap:10px;justify-items:center">
-    <a class="logo" href="#home"><b>LE BOUQUET</b><small>FLORAL BOUTIQUE</small></a>
-    <span>© 2026 Le Bouquet Floral Boutique · Phoenix, Arizona</span>
+    <a class="logo" href="#home"><img src="images/brand/alzaria-mark.webp" alt="" width="300" height="139"><span><b>ALZARIA</b><small>FLORAL BOUTIQUE</small></span></a>
+    <span>© 2026 Alzaria Floral Boutique · Phoenix, Arizona</span>
   </div>
 </footer>
 
